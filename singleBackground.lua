@@ -1,4 +1,4 @@
-function getBackground(posFunc, daynight)
+function getSingleBackground(posFunc, daynight)
     local _images = {}
 
     return {

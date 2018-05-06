@@ -1,7 +1,7 @@
-require("streets")
 require("player")
 require("daynight")
 require("singleBackground")
+require("mappingBackground")
 
 local bg;
 key = {
@@ -34,7 +34,8 @@ map[10] = "                    # # #         "
 map[11] = "                      #           "
 
 function love.load(arg)
-  bg = getBackground(drawPos, daynight)
+  streets = getMappingBackground(drawPos, daynight)
+  bg = getSingleBackground(drawPos, daynight)
   bg.load()
   key.img = love.graphics.newImage('assets/sprites/key.png')
   player.load()
