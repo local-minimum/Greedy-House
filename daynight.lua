@@ -29,5 +29,21 @@ daynight = {
     return (v >= _now % _dayLength) == dawn
   end,
 
+  getDawnColumn = function(y)
+    local dawn = (_getDay() % 2) == 0
+    if not dawn then
+      return nil
+    end
+    return math.floor(_now % _dayLength) + (_yMax - y)
+  end,
+
+  getDuskColumn = function(y)
+    local dawn = (_getDay() % 2) == 0
+    if dawn then
+      return nil
+    end
+    return math.floor(_now % _dayLength) + (_yMax - y)
+  end,
+
   getDay = _getDay
 }

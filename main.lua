@@ -2,6 +2,7 @@ require("player")
 require("daynight")
 require("singleBackground")
 require("mappingBackground")
+require("shadows")
 
 local bg;
 key = {
@@ -34,6 +35,7 @@ map[10] = "                    # # #         "
 map[11] = "                      #           "
 
 function love.load(arg)
+  shadows.load(drawPos, daynight)
   streets = getMappingBackground(drawPos, daynight)
   bg = getSingleBackground(drawPos, daynight)
   bg.load()
@@ -68,10 +70,11 @@ end
 
 function love.draw()
   bg.draw(2, 2, 25, 10, -2, -2)
-  streets.draw(2, 2, 25, 10, -2, -2, drawPos, daynight)
+  streets.draw(2, 2, 25, 10, -2, -2)
   local keyPos = drawPos(key);
   love.graphics.draw(key.img, keyPos.x, keyPos.y)
   player.draw(streets, drawPos, daynight)
+  shadows.draw(2, 2, 25, 10, -2, -2)
   debugStats()
 end
 
